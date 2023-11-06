@@ -22,4 +22,6 @@ app.use(passport.session());
 app.use(express.json());
 require("./routes/authRoutes")(app);
 
-app.listen(5000);
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT);
