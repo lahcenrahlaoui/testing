@@ -19,8 +19,7 @@ passport.use(
         {
             clientID: keys.googleClientID,
             clientSecret: keys.googleClientSecret,
-            callbackURL:
-                "http://testing-mauve-five.vercel.app/auth/google/callback",
+            callbackURL: "/auth/google/callback",
             proxy: true,
         },
         async (accessToken, refreshToken, profile, done) => {
