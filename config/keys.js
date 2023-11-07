@@ -5,3 +5,4 @@ module.exports = {
     database :"mongodb+srv://mario:pass123@cluster0.zr0wl4s.mongodb.net/", 
     cookieKey:'dfkhqeufygwbnqviuqvhadsghewvweecwefwf'
 };
+
