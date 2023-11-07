@@ -16,9 +16,10 @@ module.exports = (app) => {
     app.get("/api/logout", (req, res) => {
         req.logout();
         res.send(req.user);
+        res.redirect('/api/current_user')
     });
 
     app.get("/api/current_user", (req, res) => {
-        res.send(req.user);
+        res.send({wx : req['user'] , x:"s"});
     });
 };
