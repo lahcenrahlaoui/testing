@@ -2,7 +2,7 @@ const passport = require("passport");
 
 module.exports = (app) => {
     app.get("/", (req, res) => {
-        res.send({ msg: "hi" });
+        res.send({ msg: "home route" });
     });
     app.get(
         "/auth/google",
@@ -19,7 +19,6 @@ module.exports = (app) => {
     });
 
     app.get("/api/current_user", (req, res) => {
-        const user = req.user
-        res.send({user : req.user , x : "01" });
+        res.send(req.user);
     });
 };
