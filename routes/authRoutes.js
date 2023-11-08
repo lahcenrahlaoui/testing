@@ -19,6 +19,6 @@ module.exports = (app) => {
     });
 
     app.get("/api/current_user", (req, res) => {
-        res.send({ wx: req["user"], x: "s" });
+        res.send({ wx: req["user"], x: "se" });
     });
 };
