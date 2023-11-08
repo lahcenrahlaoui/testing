@@ -19,7 +19,7 @@ module.exports = (app) => {
     });
 
     app.get("/api/current_user", (req, res) => {
-       
+        const user = req.user
         res.send(req.user);
     });
 };
