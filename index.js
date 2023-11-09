@@ -12,11 +12,7 @@ require("./services/passport");
 
 mongoose.connect(keys.database);
 const app = express();
-app.use(
-    cors({
-        origin: ["https://testing-client-ashen.vercel.app"],
-    })
-);
+app.use(cors());
 
 app.use(
     cookieSession({
