@@ -19,25 +19,25 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-// app.use(
-//     cookieSession({
-//         maxAge: 30 * 24 * 60 * 60 * 1000,
-//         keys: [keys.cookieKey],
-//     })
-// );
-
 app.use(
-    session({
-        secret: keys.cookieKey,
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            secure: false,
-            expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-            maxAge: 30 * 24 * 60 * 60 * 1000,
-        },
+    cookieSession({
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        keys: [keys.cookieKey],
     })
 );
+
+// app.use(
+//     session({
+//         secret: keys.cookieKey,
+//         resave: false,
+//         saveUninitialized: false,
+//         cookie: {
+//             secure: false,
+//             expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+//             maxAge: 30 * 24 * 60 * 60 * 1000,
+//         },
+//     })
+// );
 app.use(passport.initialize());
 app.use(passport.session());
 // app.use(express.json());
