@@ -12,8 +12,7 @@ require("./services/passport");
 
 mongoose.connect(keys.database);
 const app = express();
-
-app.use(express.json());
+app.use(cors());
 
 app.use(
     cookieSession({
@@ -24,7 +23,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors());
+app.use(express.json());
 
 require("./routes/authRoutes")(app);
 
