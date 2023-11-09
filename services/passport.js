@@ -11,6 +11,7 @@ passport.serializeUser((user, done) => {
 });
 passport.deserializeUser(async (id, done) => {
     const user = await User.findById(id);
+    console.log(user);
     done(null, user);
 });
 
@@ -28,7 +29,7 @@ passport.use(
                 return done(null, existingUser);
             }
             const user = await new User({ googleId: profile.id }).save();
-            return done(null, user);
+            done(null, user);
         }
     )
 );
