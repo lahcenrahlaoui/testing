@@ -13,18 +13,20 @@ require("./services/passport");
 mongoose.connect(keys.database);
 const app = express();
 
-app.use(cors({ origin: "https://localhost:3000", credentials: true }))
+
+app.use(cors({ origin: "https://testing-client-ashen.vercel.app", credentials: true }))
+
 app.set("trust proxy", 1);
 
 app.use(
   session({
     secret: "secretcode",
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     cookie: {
       sameSite: "none",
       secure: true,
-      maxAge: 1000 * 60 * 60 * 24 * 7 // One Week
+      maxAge: 1000 * 60 * 60 * 24 * 30 // One Week
     }
   }))
 // app.use(
