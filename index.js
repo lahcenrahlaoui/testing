@@ -13,7 +13,7 @@ require("./services/passport");
 mongoose.connect(keys.database);
 const app = express();
 
-app.use(cors({ origin: "https://testing-client-ashen.vercel.app", credentials: true }))
+app.use(cors({ origin: ["https://testing-client-ashen.vercel.app" , "https://localhost:3000"], credentials: true }))
 app.set("trust proxy", 1);
 
 app.use(
