@@ -15,7 +15,6 @@ const app = express();
 
 const ENVIREMENT = process.env.ENVIREMENT || "development";
 if (ENVIREMENT === "development") {
-    console.log("xxxxxxxxxxxx");
     app.use(cors());
 
     app.use(
