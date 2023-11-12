@@ -13,10 +13,11 @@ require("./services/passport");
 mongoose.connect(keys.database);
 const app = express();
 
-const ENVIREMENT = process.env.ENVIREMENT || "DEVELOPMENT";
-
-if (ENVIREMENT === "DEVELOPMENT") {
+const ENVIREMENT = process.env.ENVIREMENT || "development";
+if (ENVIREMENT === "development") {
+    console.log("xxxxxxxxxxxx");
     app.use(cors());
+
     app.use(
         cookieSession({
             maxAge: 30 * 24 * 60 * 60 * 1000,
