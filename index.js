@@ -7,6 +7,8 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const cors = require("cors");
 
+const postsRoute = require("./routes/postsRoute");
+
 require("./models/User");
 require("./services/passport");
 
@@ -50,6 +52,8 @@ app.use(passport.session());
 app.use(express.json());
 
 require("./routes/authRoutes")(app);
+
+app.use("/api", postsRoute);
 
 const PORT = process.env.PORT || 5000;
 
