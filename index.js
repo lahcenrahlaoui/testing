@@ -12,6 +12,7 @@ const postsRoute = require("./routes/postsRoute");
 require("./models/User");
 require("./services/passport");
 
+mongoose.connect(keys.database);
 const app = express();
 
 const ENVIREMENT = process.env.ENVIREMENT || "development";
@@ -55,4 +56,5 @@ require("./routes/authRoutes")(app);
 app.use("/api", postsRoute);
 
 const PORT = process.env.PORT || 5000;
-mongoose.connect(keys.database).then(app.listen(PORT));
+
+app.listen(PORT);
