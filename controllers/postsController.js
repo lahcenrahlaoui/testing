@@ -33,7 +33,7 @@ const getPosts = async (req, res) => {
 };
 
 const deletePost = (req, res) => {
-    console.log(req);
+
     res.send(req);
 };
 
