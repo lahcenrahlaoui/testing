@@ -16,7 +16,7 @@ mongoose.connect(keys.database);
 const app = express();
 
 const ENVIREMENT = process.env.ENVIREMENT || "development";
-if (ENVIREMENT === "development") {
+if (ENVIREMENT !== "development") {
     app.use(cors());
 
     app.use(
