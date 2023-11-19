@@ -52,17 +52,14 @@ if (ENVIREMENT === "development") {
     app.use(
         cookieSession({
             secret: keys.cookieKey,
-            resave: false,
-            saveUninitialized: false,
-            httpOnly: false,
-            unset: "destroy",
-            store: sessionStore,
-            rolling: true,
+            resave: true,
+            saveUninitialized: true,
             cookie: {
                 sameSite: "none",
                 secure: true,
                 maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
             },
+            httpOnly: true,
         })
     );
 }
