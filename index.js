@@ -36,11 +36,11 @@ if (ENVIREMENT === "development") {
     app.use(
         session({
             secret: keys.cookieKey,
-            resave: true,
-            saveUninitialized: true,
+            resave: false,
+            saveUninitialized: false,
             cookie: {
                 sameSite: "none",
-                secure: false,
+                // secure: true,
                 maxAge: 1000 * 60 * 60 * 24 * 7, // One Week
             },
         })
