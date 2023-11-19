@@ -56,6 +56,4 @@ app.use("/api", postsRoute);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-    mongoose.connect(keys.database);
-});
+app.listen(PORT).then(mongoose.connect(keys.database));
