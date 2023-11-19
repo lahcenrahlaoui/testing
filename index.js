@@ -55,5 +55,4 @@ require("./routes/authRoutes")(app);
 app.use("/api", postsRoute);
 
 const PORT = process.env.PORT || 5000;
-
-app.listen(PORT).then(mongoose.connect(keys.database));
+mongoose.connect(keys.database).then(app.listen(PORT));
