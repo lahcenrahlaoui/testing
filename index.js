@@ -29,6 +29,14 @@ mongoose
     });
 
 app.use(
+    cors({
+        origin: "https://testing-client-ashen.vercel.app",
+        credentials: true,
+    })
+);
+app.set("trust proxy", 1);
+
+app.use(
     session({
         secret: keys.cookieKey,
         resave: true,
