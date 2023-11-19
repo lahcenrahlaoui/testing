@@ -48,6 +48,7 @@ if (ENVIREMENT === "development") {
                 secure: true,
                 maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
             },
+            store: new RedisStore(),
         })
     );
 }
