@@ -12,7 +12,6 @@ const postsRoute = require("./routes/postsRoute");
 require("./models/User");
 require("./services/passport");
 
-mongoose.connect(keys.database);
 const app = express();
 
 const ENVIREMENT = process.env.ENVIREMENT || "development";
@@ -57,4 +56,6 @@ app.use("/api", postsRoute);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT);
+app.listen(PORT, () => {
+    mongoose.connect(keys.database);
+});
