@@ -50,7 +50,7 @@ if (ENVIREMENT === "development") {
     );
     app.set("trust proxy", 1);
     app.use(
-        cookieSession({
+        session({
             secret: keys.cookieKey,
             resave: true,
             saveUninitialized: true,
