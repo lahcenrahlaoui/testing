@@ -20,13 +20,7 @@ require("./services/passport");
 mongoose.connect(keys.database);
 const app = express();
 
-var cookie = require("cookie");
-app.use((req, res) => {
-    var cookies = cookie.parse(req.headers.cookie || "");
-    res.setHeader("Content-Type", "text/html; charset=UTF-8");
 
-    console.log(cookies);
-});
 
 const cookieParser = require("cookie-parser");
 
@@ -53,7 +47,7 @@ if (ENVIREMENT === "development") {
     app.use(
         cookieSession({
             sameSite: "none",
-            secret: keys.cookieKey,
+            keys: [keys.cookieKey],
             resave: true,
             saveUninitialized: true,
             cookie: {
