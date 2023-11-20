@@ -51,8 +51,8 @@ if (ENVIREMENT === "development") {
     app.set("trust proxy", 1);
     app.use(
         cookieSession({
-            sameSite: "lax",
-            secret: [keys.cookieKey],
+            sameSite: "none",
+            secret: keys.cookieKey,
             resave: true,
             saveUninitialized: true,
             cookie: {
