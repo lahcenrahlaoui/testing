@@ -13,24 +13,23 @@ const postsRoute = require("./routes/postsRoute");
 require("./models/User");
 require("./services/passport");
 
-// var escapeHtml = require('escape-html');
-var http = require("http");
-var url = require("url");
-
 mongoose.connect(keys.database);
 const app = express();
 
-app.use((req, res) => {
-    var cookie = require("cookie");
-    var cookies = cookie.parse(req.headers.cookie || "");
-    res.setHeader("Content-Type", "text/html; charset=UTF-8");
-
-    console.log(cookies);
-});
-
 const cookieParser = require("cookie-parser");
 
-// app.use(cookieParser());
+app.use(cookieParser());
+// app.use(function (req, res, next) {
+//     res.header("Content-Type", "application/json;charset=UTF-8");
+//     res.header("Access-Control-Allow-Credentials", true);
+//     res.header(
+//         "Access-Control-Allow-Headers",
+//         "Origin, X-Requested-With, Content-Type, Accept"
+//     );
+//     res.cookie("token", "someauthtoken");
+
+//     next();
+// });
 
 const ENVIREMENT = process.env.ENVIREMENT || "development";
 if (ENVIREMENT === "development") {
