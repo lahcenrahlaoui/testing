@@ -20,13 +20,13 @@ var url = require("url");
 mongoose.connect(keys.database);
 const app = express();
 
-app.use((req, res) => {
-    var cookie = require("cookie");
-    var cookies = cookie.parse(req.headers.cookie || "");
-    res.setHeader("Content-Type", "text/html; charset=UTF-8");
+// app.use((req, res) => {
+//     var cookie = require("cookie");
+//     var cookies = cookie.parse(req.headers.cookie || "");
+//     res.setHeader("Content-Type", "text/html; charset=UTF-8");
 
-    console.log(cookies);
-});
+//     console.log(cookies);
+// });
 
 const cookieParser = require("cookie-parser");
 
