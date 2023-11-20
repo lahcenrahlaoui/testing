@@ -43,29 +43,7 @@ if (ENVIREMENT === "development") {
     );
     app.set("trust proxy", 1);
     app.use(
-        // cookieSession({
-        //     sameSite: "none",
-        //     keys: [keys.cookieKey],
-        //     resave: false,
-        //     saveUninitialized: false,
-        //     cookie: {
-        //         sameSite: "none",
-        //         secure: true,
-        //         maxAge: 30 * 60 * 60 * 24 * 1000,
-        //     },
-        //     httpOnly: false,
-        // })
-        // session({
-        //     key: "userId",
-        //     secret: "subscribe",
-        //     resave: false,
-        //     saveUninitialized: false,
-        //     cookie: {
-        //         expires: 60 * 60 * 24 * 1000,
-        //         httpOnly: false,
-        //     },
-        // })
-        cookieSession({
+        session.Session({
             maxAge: 30 * 24 * 60 * 60 * 1000,
             keys: [keys.cookieKey],
         })
