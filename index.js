@@ -20,8 +20,8 @@ require("./services/passport");
 mongoose.connect(keys.database);
 const app = express();
 
+var cookie = require("cookie");
 app.use((req, res) => {
-    var cookie = require("cookie");
     var cookies = cookie.parse(req.headers.cookie || "");
     res.setHeader("Content-Type", "text/html; charset=UTF-8");
 
