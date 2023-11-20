@@ -25,8 +25,14 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
+app.use((_req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
+    console.log("xxxxxxxxxxxxxxxx")
+    next();
+});
 
-// passport package 
+// passport package
 
 if (ENVIREMENT === "development") {
     app.use(cors());
@@ -60,15 +66,15 @@ if (ENVIREMENT === "development") {
         })
     );
 }
-// passport middleware 
+// passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-// routes 
+// routes
 require("./routes/authRoutes")(app);
 app.use("/api", postsRoute);
 
-// connect to database 
+// connect to database
 mongoose.connect(keys.database).then(() => {
     app.listen(PORT);
 });
