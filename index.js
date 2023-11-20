@@ -20,8 +20,6 @@ require("./services/passport");
 mongoose.connect(keys.database);
 const app = express();
 
-
-
 const cookieParser = require("cookie-parser");
 
 app.use(cookieParser());
@@ -45,17 +43,27 @@ if (ENVIREMENT === "development") {
     );
     app.set("trust proxy", 1);
     app.use(
-        cookieSession({
-            sameSite: "none",
-            keys: [keys.cookieKey],
-            resave: true,
-            saveUninitialized: true,
+        // cookieSession({
+        //     sameSite: "none",
+        //     keys: [keys.cookieKey],
+        //     resave: false,
+        //     saveUninitialized: false,
+        //     cookie: {
+        //         sameSite: "none",
+        //         secure: true,
+        //         maxAge: 30 * 60 * 60 * 24 * 1000,
+        //     },
+        //     httpOnly: false,
+        // })
+        session({
+            key: "userId",
+            secret: "subscribe",
+            resave: false,
+            saveUninitialized: false,
             cookie: {
-                sameSite: "none",
-                secure: true,
-                maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
+                expires: 60 * 60 * 24,
+                httpOnly: false,
             },
-            httpOnly: false,
         })
     );
 }
