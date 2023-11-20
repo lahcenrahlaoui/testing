@@ -55,16 +55,21 @@ if (ENVIREMENT === "development") {
         //     },
         //     httpOnly: false,
         // })
-        session({
-            key: "userId",
-            secret: "subscribe",
-            resave: false,
-            saveUninitialized: false,
-            cookie: {
-                expires: 60 * 60 * 24 * 1000,
-                httpOnly: false,
-            },
+        // session({
+        //     key: "userId",
+        //     secret: "subscribe",
+        //     resave: false,
+        //     saveUninitialized: false,
+        //     cookie: {
+        //         expires: 60 * 60 * 24 * 1000,
+        //         httpOnly: false,
+        //     },
+        // })
+        cookieSession({
+            maxAge: 30 * 24 * 60 * 60 * 1000,
+            keys: [keys.cookieKey],
         })
+
     );
 }
 
