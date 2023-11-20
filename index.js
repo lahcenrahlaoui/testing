@@ -30,7 +30,7 @@ app.use((req, res) => {
 
 const cookieParser = require("cookie-parser");
 
-// app.use(cookieParser());
+app.use(cookieParser());
 
 const ENVIREMENT = process.env.ENVIREMENT || "development";
 if (ENVIREMENT === "development") {
