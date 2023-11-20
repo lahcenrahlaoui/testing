@@ -1,30 +1,33 @@
+// packages
 const express = require("express");
 const mongoose = require("mongoose");
-const keys = require("./config/keys");
+
+const cors = require("cors");
+const passport = require("passport");
 
 const session = require("express-session");
 const cookieSession = require("cookie-session");
+const cookieParser = require("cookie-parser");
 
-const passport = require("passport");
-const cors = require("cors");
+// keys
+const keys = require("./config/keys");
+const PORT = process.env.PORT || 5000;
+const ENVIREMENT = process.env.ENVIREMENT || "development";
 
+// files
 const postsRoute = require("./routes/postsRoute");
-
 require("./models/User");
 require("./services/passport");
 
-// var escapeHtml = require('escape-html');
-// var http = require("http");
-// var url = require("url");
-
-mongoose.connect(keys.database);
 const app = express();
 
-const cookieParser = require("cookie-parser");
-
+// middlewares
+app.use(express.json());
 app.use(cookieParser());
 
-const ENVIREMENT = process.env.ENVIREMENT || "development";
+
+// passport package 
+
 if (ENVIREMENT === "development") {
     app.use(cors());
 
@@ -46,8 +49,8 @@ if (ENVIREMENT === "development") {
         session({
             sameSite: "none",
             secret: keys.cookieKey,
-            resave: true,
-            saveUninitialized: true,
+            resave: false,
+            saveUninitialized: false,
             cookie: {
                 sameSite: "none",
                 secure: true,
@@ -55,18 +58,17 @@ if (ENVIREMENT === "development") {
             },
             httpOnly: false,
         })
-
     );
 }
-
+// passport middleware 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.json());
 
+// routes 
 require("./routes/authRoutes")(app);
-
 app.use("/api", postsRoute);
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT);
+// connect to database 
+mongoose.connect(keys.database).then(() => {
+    app.listen(PORT);
+});
