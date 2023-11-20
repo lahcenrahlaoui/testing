@@ -43,7 +43,7 @@ if (ENVIREMENT === "development") {
     );
     app.set("trust proxy", 1);
     app.use(
-        session.Session({
+        session({
             maxAge: 30 * 24 * 60 * 60 * 1000,
             keys: [keys.cookieKey],
         })
