@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use((_req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "*");
-    console.log("xxxxxxxxxxxxxxxx")
+    console.log("xxxxxxxxxxxxxxxx");
     next();
 });
 
@@ -55,14 +55,15 @@ if (ENVIREMENT === "development") {
         session({
             sameSite: "none",
             secret: keys.cookieKey,
+            key: "userid",
             resave: false,
             saveUninitialized: false,
             cookie: {
                 sameSite: "none",
-                secure: true,
-                maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
+                // maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
+                expires: 30 * 60 * 60 * 24 * 1000, // One Week
+                httpOnly: false,
             },
-            httpOnly: false,
         })
     );
 }
