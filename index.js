@@ -44,19 +44,15 @@ if (ENVIREMENT === "development") {
     );
     app.set("trust proxy", 1);
     app.use(
-        session({
+        cookieSession({
             sameSite: "none",
             secret: keys.cookieKey,
-            key: "userid",
             resave: false,
             saveUninitialized: false,
             cookie: {
                 sameSite: "none",
                 secure: true,
                 maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
-                // maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
-                expires: 30 * 60 * 60 * 24 * 1000, // One Week
-                httpOnly: false,
             },
             httpOnly: false,
         })
