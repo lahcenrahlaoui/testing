@@ -45,10 +45,11 @@ if (ENVIREMENT === "development") {
     );
 } else {
     app.use(
-        cors({
-            origin: "https://testing-client-ashen.vercel.app",
-            credentials: true,
-        })
+        cors()
+        //     {
+        //     origin: "https://testing-client-ashen.vercel.app",
+        //     credentials: true,
+        // }
     );
     app.set("trust proxy", 1);
     app.use(
