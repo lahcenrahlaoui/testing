@@ -18,13 +18,13 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use((_req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "*");
-    console.log("xxxxxxxxxxxxxxxx");
-    console.log("xxxxxxxxxxxxxxxx");
-    next();
-});
+// app.use((_req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "*");
+//     console.log("xxxxxxxxxxxxxxxx");
+//     console.log("xxxxxxxxxxxxxxxx");
+//     next();
+// });
 
 // passport package
 if (ENVIREMENT === "development") {
@@ -47,13 +47,13 @@ if (ENVIREMENT === "development") {
         cookieSession({
             sameSite: "none",
             secret: keys.cookieKey,
-            resave: false,
-            saveUninitialized: false,
+            resave: true,
+            saveUninitialized: true,
             cookie: {
                 sameSite: "none",
                 maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
             },
-            secure: true,
+
             httpOnly: false,
         })
     );
