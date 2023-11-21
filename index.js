@@ -27,7 +27,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(bodyParser.json({ limit: "30mb" }));
+// app.use(bodyParser.json({ limit: "30mb" }));
 
 app.use((_req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -49,17 +49,10 @@ if (ENVIREMENT === "development") {
     );
 } else {
     app.use(
-        cors(
-            {
-                origin: "https://testing-client-ashen.vercel.app",
-                credentials: true,
-            }
-            // {
-            //     origin: "*",
-            //     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
-            //     credentials: true,
-            // }
-        )
+        cors({
+            origin: "https://testing-client-ashen.vercel.app",
+            credentials: true,
+        })
     );
     app.set("trust proxy", 1);
     app.use(
