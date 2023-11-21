@@ -30,9 +30,9 @@ const {
 } = require("../controllers/postsController");
 
 module.exports = (app) => {
-    app.get("/posts", requireLogin, getPosts);
+    app.get("/api/posts", requireLogin, getPosts);
 
-    app.post("/createPost", requireLogin, createPost);
+    app.post("/api/createPost", requireLogin, createPost);
 
-    app.delete("/createPost/:id", requireLogin, deletePost);
+    app.delete("/api/createPost/:id", requireLogin, deletePost);
 };
