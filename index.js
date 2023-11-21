@@ -51,7 +51,7 @@ if (ENVIREMENT === "development") {
         //     credentials: true,
         // }
     );
-    app.set("trust proxy", 1);
+    // app.set("trust proxy", 1);
     app.use(
         session({
             sameSite: "none",
