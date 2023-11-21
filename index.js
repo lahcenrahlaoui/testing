@@ -2,8 +2,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const csrf = require("csurf");
-
 const cors = require("cors");
 const passport = require("passport");
 
@@ -25,15 +23,9 @@ require("./services/passport");
 
 const app = express();
 
-const csrfProtection = csrf({ cookie: true });
-
-
 // middlewares
 app.use(express.json());
 app.use(cookieParser());
-
-app.use(csrfProtection);
-
 
 // app.use(bodyParser.json({ limit: "30mb" }));
 
