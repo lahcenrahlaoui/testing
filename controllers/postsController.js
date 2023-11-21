@@ -6,7 +6,18 @@ const Post = require("../models/post");
 const User = require("../models/User");
 
 const createPost = async (req, res) => {
+    console.log("//////////////////////////////////////////////////");
+    console.log("/////////////////////");
+    console.log("/////////////////////");
+    console.log("/////////////////////");
+    console.log(req);
+    console.log(req.body);
+    console.log(req.params);
     const { title, content, tags } = req.body;
+    console.log("/////////////////////");
+    console.log("/////////////////////");
+    console.log("/////////////////////");
+    console.log("///////////////////////////////////////////////////");
 
     try {
         const post = await Post.create({
@@ -33,7 +44,6 @@ const getPosts = async (req, res) => {
 };
 
 const deletePost = (req, res) => {
-
     res.send(req);
 };
 
