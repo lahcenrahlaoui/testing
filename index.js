@@ -6,15 +6,20 @@ const passport = require("passport");
 const session = require("express-session");
 const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
+
+
 // keys
 const keys = require("./config/keys");
 const PORT = process.env.PORT || 5000;
 const ENVIREMENT = process.env.ENVIREMENT || "development";
+
+
 // files
-const postsRoute = require("./routes/postsRoute");
 require("./models/User");
 require("./services/passport");
 const app = express();
+
+
 // middlewares
 app.use(express.json());
 app.use(cookieParser());
@@ -25,6 +30,8 @@ app.use(cookieParser());
 //     console.log("xxxxxxxxxxxxxxxx");
 //     next();
 // });
+
+
 
 // passport package
 if (ENVIREMENT === "development") {
@@ -58,12 +65,18 @@ if (ENVIREMENT === "development") {
         })
     );
 }
+
+
 // passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 // routes
 require("./routes/authRoutes")(app);
-app.use("/api", postsRoute);
+require("./routes/postsRoute")(app)
+
+
 // connect to database
 mongoose.connect(keys.database).then(() => {
     app.listen(PORT);
