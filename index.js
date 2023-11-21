@@ -29,10 +29,6 @@ app.use(cookieParser());
 
 // app.use(bodyParser.json({ limit: "30mb" }));
 
-
-
-
-
 // passport package
 
 if (ENVIREMENT === "development") {
@@ -56,13 +52,12 @@ if (ENVIREMENT === "development") {
         session({
             sameSite: "none",
             secret: keys.cookieKey,
-            key: "userid",
             resave: false,
             saveUninitialized: false,
             cookie: {
                 sameSite: "none",
                 // maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
-                expires: 30 * 60 * 60 * 24 * 1000, // One Week
+                maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
                 httpOnly: false,
             },
         })
