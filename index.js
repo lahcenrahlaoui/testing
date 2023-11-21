@@ -58,8 +58,8 @@ if (ENVIREMENT === "development") {
                 sameSite: "none",
                 // maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
                 maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
-                httpOnly: false,
             },
+            httpOnly: false,
         })
     );
 }
