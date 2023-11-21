@@ -9,6 +9,9 @@ const session = require("express-session");
 const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
 
+const bodyParser = require('body-parser');
+
+
 // keys
 const keys = require("./config/keys");
 const PORT = process.env.PORT || 5000;
@@ -24,6 +27,9 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(cookieParser());
+
+app.use(bodyParser.json({ limit: '30mb' }));
+
 
 app.use((_req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -45,11 +51,17 @@ if (ENVIREMENT === "development") {
     );
 } else {
     app.use(
-        cors()
-        //     {
-        //     origin: "https://testing-client-ashen.vercel.app",
-        //     credentials: true,
-        // }
+        cors(
+            //     {
+            //     origin: "https://testing-client-ashen.vercel.app",
+            //     credentials: true,
+            // }
+            {
+                origin: "*",
+                methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+                credentials: true,
+            }
+        )
     );
     // app.set("trust proxy", 1);
     app.use(
