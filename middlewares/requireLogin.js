@@ -1,7 +1,7 @@
 module.exports = (req, res, next) => {
     console.log("req.user++++++++++++++++++++++++");
     console.log("req.user++++++++++");
-    console.log(req);
+    console.log(req.isAuthenticated());
     console.log("req.user++++++++");
     console.log(req.user);
 
