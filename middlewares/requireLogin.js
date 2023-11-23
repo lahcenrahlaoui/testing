@@ -1,8 +1,9 @@
 module.exports = (req, res, next) => {
-    console.log("req.user++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    console.log("req.user+++++++++++++++++++++++++++++++++++++++");
-    console.log("req.user+++++++++++++++++++++++++++++++++++++++");
-    console.log(typeof req);
+    console.log("req.user++++++++++++++++++++++++");
+    console.log("req.user++++++++++");
+    console.log(req);
+    console.log("req.user++++++++");
+    console.log(req.user);
 
     if (!req.user) {
         console.log("you must login ");
