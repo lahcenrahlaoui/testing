@@ -12,7 +12,7 @@ const createPost = async (req, res) => {
     console.log("/////////////////////");
     console.log(req);
     console.log(req.body);
-    console.log(req.params);
+     
     const { title, content, tags } = req.body;
     console.log("/////////////////////");
     console.log("/////////////////////");

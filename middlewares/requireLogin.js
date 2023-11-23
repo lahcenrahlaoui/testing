@@ -1,5 +1,16 @@
-module.exports = (app) => (req, res, next) => {
-    console.log(app);
+module.exports = (req, res, next) => {
+    
+     
+    console.log("req.user++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    console.log("req.user++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    console.log("req.user++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    console.log("req.user++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    console.log("req.user++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    console.log("req.user++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    console.log("req.user++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    console.log(typeof req)
+
+
     if (!req.user) {
         console.log("you must login ");
         return res.send("you must login");
