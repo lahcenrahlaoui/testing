@@ -6,14 +6,13 @@ const Post = require("../models/post");
 const User = require("../models/User");
 
 const createPost = async (req, res) => {
-    console.log(req)
     console.log("//////////////////////////////////////////////////");
     console.log("/////////////////////");
     console.log("/////////////////////");
+    console.log(req.cookies);
     console.log("/////////////////////");
-    console.log(req);
-    console.log(req.body);
-     
+    console.log(req.user);
+
     const { title, content, tags } = req.body;
     console.log("/////////////////////");
     console.log("/////////////////////");
