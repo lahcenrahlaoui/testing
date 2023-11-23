@@ -69,7 +69,7 @@ if (ENVIREMENT === "development") {
 
 // passport middleware
 
-app.use(passport.authenticate('session'));
+// app.use(passport.authenticate('session'));
 
 
 app.use(passport.initialize());
