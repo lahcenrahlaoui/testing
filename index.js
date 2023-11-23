@@ -54,6 +54,7 @@ if (ENVIREMENT === "development") {
             cookie: {
                 sameSite: "none",
                 maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
+                secure: true,
             },
 
             httpOnly: false,
