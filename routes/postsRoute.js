@@ -37,7 +37,7 @@ module.exports = (app) => {
     app.post(
         "/api/createPost",
         (req, res, next) => {
-            console.log(req.user);
+            console.log(req);
             next();
         },
         async (req, res) => {
