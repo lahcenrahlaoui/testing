@@ -6,6 +6,7 @@ const Post = require("../models/post");
 const User = require("../models/User");
 
 const createPost = async (req, res) => {
+    console.log(req)
     console.log("//////////////////////////////////////////////////");
     console.log("/////////////////////");
     console.log("/////////////////////");
