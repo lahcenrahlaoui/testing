@@ -58,11 +58,20 @@ if (ENVIREMENT === "development") {
             },
 
             httpOnly: false,
+
+            store: new MongoStore({
+                url: keys.database,
+                collection: "sessions",
+            }),
         })
     );
 }
 
 // passport middleware
+
+app.use(passport.authenticate('session'));
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 

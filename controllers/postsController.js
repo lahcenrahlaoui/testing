@@ -9,7 +9,7 @@ const createPost = async (req, res) => {
     console.log("//////////////////////////////////////////////////");
     console.log("/////////////////////");
     console.log("/////////////////////");
-    console.log(req.cookies);
+    console.log(req.cookie);
     console.log("/////////////////////");
     console.log(req.user);
 
