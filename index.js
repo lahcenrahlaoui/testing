@@ -59,10 +59,7 @@ if (ENVIREMENT === "development") {
 
             httpOnly: false,
 
-            store: new MongoStore({
-                url: keys.database,
-                collection: "sessions",
-            }),
+       
         })
     );
 }
