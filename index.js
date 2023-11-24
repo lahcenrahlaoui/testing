@@ -14,7 +14,7 @@ const ENVIREMENT = process.env.ENVIREMENT || "development";
 
 // files
 require("./models/User");
-require("./services/passport");
+require("./services/passport")(passport);
 const app = express();
 
 // middlewares
@@ -64,14 +64,10 @@ if (ENVIREMENT === "development") {
 
 // passport middleware
 
-app.use(passport.authenticate('session'));
-
 app.use(passport.initialize());
 app.use(passport.session());
 
 // routes
-
-// require("./middlewares/requireLogin")(app);
 
 require("./routes/authRoutes")(app);
 require("./routes/postsRoute")(app);
