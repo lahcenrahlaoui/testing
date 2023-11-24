@@ -19,14 +19,8 @@ const app = express();
 
 // middlewares
 app.use(express.json());
-app.use(cookieParser());
-// app.use((_req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "*");
-//     console.log("xxxxxxxxxxxxxxxx");
-//     console.log("xxxxxxxxxxxxxxxx");
-//     next();
-// });
+
+
 
 // passport package
 if (ENVIREMENT === "development") {
@@ -43,8 +37,8 @@ if (ENVIREMENT === "development") {
             origin: "https://testing-client-ashen.vercel.app",
             credentials: true,
         })
-    );
-    app.set("trust proxy", 1);
+        );
+        app.set("trust proxy", 1);
     app.use(
         cookieSession({
             sameSite: "none",
@@ -71,6 +65,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 require("./routes/postsRoute")(app);
+app.use(cookieParser(keys.cookieKey));
 
 // connect to database
 mongoose.connect(keys.database).then(() => {
