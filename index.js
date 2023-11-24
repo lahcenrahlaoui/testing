@@ -20,8 +20,6 @@ const app = express();
 // middlewares
 app.use(express.json());
 
-
-
 // passport package
 if (ENVIREMENT === "development") {
     app.use(cors());
@@ -37,21 +35,26 @@ if (ENVIREMENT === "development") {
             origin: "https://testing-client-ashen.vercel.app",
             credentials: true,
         })
-        );
-        app.set("trust proxy", 1);
+    );
+    app.set("trust proxy", 1);
     app.use(
-        cookieSession({
-            sameSite: "none",
-            secret: keys.cookieKey,
-            resave: true,
-            saveUninitialized: true,
-            cookie: {
-                sameSite: "none",
-                maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
-                secure: true,
-            },
+        // cookieSession({
+        //     sameSite: "none",
+        //     secret: keys.cookieKey,
+        //     resave: true,
+        //     saveUninitialized: true,
+        //     cookie: {
+        //         sameSite: "none",
+        //         maxAge: 30 * 60 * 60 * 24 * 1000, // One Week
+        //         secure: true,
+        //     },
 
-            httpOnly: false,
+        //     httpOnly: false,
+        // })
+        session({
+            secret: keys.cookieKey,
+            resave: false,
+            saveUninitialized: false,
         })
     );
 }
