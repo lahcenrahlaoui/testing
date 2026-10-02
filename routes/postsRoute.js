@@ -1,5 +1,4 @@
-const requireLogin = require("../middlewares/requireLogin");
-const {
+ const {
     createPost,
     getPosts,
     deletePost,
@@ -7,9 +6,9 @@ const {
 const Post = require("../models/post");
 
 module.exports = (app) => {
-    app.get("/api/posts", requireLogin, getPosts);
+    app.get("/api/posts",   getPosts);
 
-    app.post("/api/createPost", requireLogin, createPost);
+    app.post("/api/createPost",   createPost);
     // app.post(
     //     "/api/createPost",
     //     (req, res, next) => {
@@ -32,5 +31,5 @@ module.exports = (app) => {
     //     }
     // );
 
-    app.delete("/api/createPost/:id", requireLogin, deletePost);
+    app.delete("/api/createPost/:id",  deletePost);
 };

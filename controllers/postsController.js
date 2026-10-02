@@ -1,54 +1,59 @@
-const mongoose = require("mongoose");
+ 
+const posts = [
+    {
+        id: 1,
+        title: "First Post",
+        content: "This is a hardcoded post.",
+        tags: ["test", "demo"],
+        userId: 1,
+    },
+    {
+        id: 2,
+        title: "Second Post",
+        content: "Another hardcoded post.",
+        tags: ["example"],
+        userId: 1,
+    },
+];
 
-// const Post = mongoose.model("posts");
-
-const Post = require("../models/post");
-const User = require("../models/User");
-
-const createPost = async (req, res) => {
-    console.log("//////////////////////////////////////////////////");
-    console.log("/////////////////////");
-    console.log("/////////////////////");
-    console.log(req.cookie);
-    console.log("/////////////////////");
-    console.log(req.user);
-
+const createPost = (req, res) => {
     const { title, content, tags } = req.body;
-    console.log("/////////////////////");
-    console.log("/////////////////////");
-    console.log("/////////////////////");
-    console.log("///////////////////////////////////////////////////");
 
-    try {
-        const post = await Post.create({
-            title,
-            content,
-            tags,
-            _user: req.user.id,
-        });
-        res.send(post);
-    } catch (e) {
-        console.log("error");
-    }
+    const post = {
+        id: posts.length + 1,
+        title,
+        content,
+        tags,
+        userId: 1,
+    };
+
+    posts.push(post);
+
+    res.send(post);
 };
 
-const getPosts = async (req, res) => {
-    const { user } = req;
-
-    try {
-        const posts = await Post.find({ _user: user.id });
-        res.send(posts);
-    } catch (e) {
-        console.log("error");
-    }
+const getPosts = (req, res) => {
+    res.send(posts);
 };
 
 const deletePost = (req, res) => {
-    res.send(req);
+    const { id } = req.params;
+
+    const index = posts.findIndex((post) => post.id === Number(id));
+
+    if (index === -1) {
+        return res.status(404).send({
+            message: "Post not found",
+        });
+    }
+
+    const deletedPost = posts.splice(index, 1);
+
+    res.send(deletedPost[0]);
 };
 
 module.exports = {
     createPost,
     getPosts,
     deletePost,
-};
+}; 
