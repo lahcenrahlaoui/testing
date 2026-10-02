@@ -3,8 +3,7 @@
     getPosts,
     deletePost,
 } = require("../controllers/postsController");
-const Post = require("../models/post");
-
+ 
 module.exports = (app) => {
     app.get("/api/posts",   getPosts);
 
